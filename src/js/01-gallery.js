@@ -5,7 +5,7 @@ console.log(galleryItems);
 
 const listGallery = document.querySelector(".gallery");
 
-const murkupGallery = galleryItems
+const markupGallery = galleryItems
   .map(
     ({ preview, original, description }) => `<div class="gallery__item">
 <a class="gallery__link" href="large-image.jpg">
@@ -20,15 +20,13 @@ const murkupGallery = galleryItems
   )
   .join("");
 
-listGallery.insertAdjacentHTML("beforeend", murkupGallery);
-// list.innerHTML = murkupGallery;
-// console.log(listGallery)
+listGallery.insertAdjacentHTML("beforeend", markupGallery);
+
 
 listGallery.addEventListener("click", onOpenImageClick);
 
 function onOpenImageClick(e) {
   e.preventDefault();
-  //  window.addEventListener('keydown', onEscKeypress);
 
   if (e.target.nodeName !== "IMG") {
     return;
@@ -41,43 +39,15 @@ function onOpenImageClick(e) {
   );
 
   instance.show();
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") instance.close();
+  });
 }
 
 
 
-// onShow: (instance) => {
-// 	// Close when hitting escape.
-// 	document.onkeydown = function(evt) {
-// 		evt = evt || window.event;
-// 		var isEscape = false;
-// 		if ( "key" in evt ) {
-// 			isEscape = ( evt.key === "Escape" || evt.key === "Esc" );
-// 		} else {
-// 			isEscape = ( evt.keyCode === 27 );
-// 		}
-// 		if ( isEscape ) {
-// 			instance.close();
-// 		}
-// 	};
-// }
 
-// function onCloseImage() {
-//   window.removeEventListener('keydown', onEscKeypress)
-//   instance.close()
-// }
-
-// //   }
-
-// // onShow: (instance) => {
-// //   window.addEventListener('keydown', onEscKeypress);
-// // }
-
-// function onEscKeypress(e) {
-//   if(e.code === 'Escape') {
-//     instance.close();
-//   }
-
-// }
 
 // Виконуй це завдання у файлах 01-gallery.html і 01-gallery.js. Розбий його на декілька підзавдань:
 

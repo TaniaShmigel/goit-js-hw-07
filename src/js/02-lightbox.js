@@ -6,7 +6,7 @@ console.log(galleryItems);
 const listGallery = document.querySelector(".gallery");
 
 
-const murkupGallery = galleryItems
+const markupGallery = galleryItems
   .map(
     ({ preview, original, description }) => `<li class="gallery__item">
     <a class="gallery__item" href="${original}">
@@ -16,10 +16,15 @@ const murkupGallery = galleryItems
   )
   .join("");
 
-listGallery.insertAdjacentHTML("beforeend", murkupGallery);
+listGallery.insertAdjacentHTML("beforeend", markupGallery);
 
-// listGallery.addEventListener('click', onOpenImageClick);
+listGallery.addEventListener('click', onOpenImageClick);
+
+function onOpenImageClick(e) {
+  e.preventDefault()
+};
 
 
 
-console.log(simpleLightbox);
+const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250});
+// console.log(lightbox)
